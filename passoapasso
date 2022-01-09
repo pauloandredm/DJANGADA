@@ -1,0 +1,89 @@
+ir pasta  ----> cd firstProject
+activate my env ----> conda info --envs
+django-admin startproject nome
+python manage.py startapp nomeapp
+new folders - templates/nomeapp
+new file - templates/nomeapp/index,users
+
+settings.py -
+    # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+    TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
+    STATIC_DIR = os.path.join(BASE_DIR,"static")
+
+settings.py -
+
+    TEMPLATES = [
+    'DIRS': [TEMPLATE_DIR,],
+    ------------------------------
+    # Static files (CSS, JavaScript, Images)
+    # https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+    STATIC_URL = '/static/'
+    ------------------------------------
+    INSTALLED_APPS = [
+    'django.contrib.staticfiles',
+    'nomeapp'
+
+nomeapp/models -
+
+    exemplo:
+
+    # Create your models here.
+
+    class User(models.Model):
+        first_name = models.CharField(max_length=128)
+        last_name = models.CharField(max_length=128)
+        email = models.EmailField(max_length=254,unique=True)
+
+nomeapp/views -
+
+    from django.http import HttpResponse
+    from FirstApp.models import User
+
+    # Create your views here.
+
+    def index(request):
+        return render(request,'FirstApp/index.html')
+
+    def users(request):
+        user_list = User.objects.order_by('first_name')
+        user_dict = {'users':user_list}
+        return render(request,'FirstApp/users.html',context=user_dict)
+
+new file - nomeapp/urls.py
+
+nomeapp/urls.py -
+
+    from django.conf.urls import url
+    from FirstApp import views
+
+    urlpatterns = [
+    url(r'^$',views.users,name='users'),
+    ]
+
+nome/urls.py -
+
+    from django.conf.urls import include
+    from FirstApp import views
+
+    urlpatterns = [
+        url(r'^$',views.index,name='index'),
+        url(r'^users/',include('FirstApp.urls')),
+        url(r'^admin/', admin.site.urls),
+    ]
+
+python manage.py migrate ---> verificar se ta tudo deboas
+python manage.py makemigrations nomeapp ---> salvar
+python manage.py migrate ---> executar
+
+nomeapp/admin -
+
+    from FirstApp.models import User
+    # Register your models here.
+
+    admin.site.register(User)
+
+python manage.py runserver ---> ve se ta tudo deboas
+python manage.py createsuperuser
+new file ---> basedir/populate  ---> muita coisa pra colocar aqui
+fzr as templates 
