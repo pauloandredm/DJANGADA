@@ -1,3 +1,10 @@
+vagrant init ubuntu/bionic64
+
+vagrant up
+
+vagrant ssh
+(pra sair só digitar 'exit')
+
 ir pasta  ----> cd firstProject
 activate my env ----> conda info --envs
 django-admin startproject nome
