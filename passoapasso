@@ -14,6 +14,16 @@ source ~/env/bin/activate (ativar venv)
 django-admin startproject nome
 python manage.py startapp nomeapp
 INSTALLED_APPS = (para vincular a api criada)
+criar models
+autorizar model no settings
+AUTH_USER_MODEL = 'profiles_api.UserProfile'
+create superuser
+vai no ademir >>
+    from profiles_api import models
+    # Register your models here.
+    admin.site.register(models.UserProfile)
+
+
 
 
 ir pasta  ----> cd firstProject
