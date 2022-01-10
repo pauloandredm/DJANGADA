@@ -1,9 +1,20 @@
-vagrant init ubuntu/bionic64
+vagrant init ubuntu/bionic64 (instalar vagrant)
 
-vagrant up
+vagrant up (baixar os packges)
 
-vagrant ssh
+vagrant ssh (iniciar)
 (pra sair só digitar 'exit')
+
+cd /vagrant >> 
+python -m venv ~/env (criar venv chamada env) >>
+
+source ~/env/bin/activate (ativar venv)
+(pra sair só digitar 'deactivate')
+
+django-admin startproject nome
+python manage.py startapp nomeapp
+INSTALLED_APPS = (para vincular a api criada)
+
 
 ir pasta  ----> cd firstProject
 activate my env ----> conda info --envs
