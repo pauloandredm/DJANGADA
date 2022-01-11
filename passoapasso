@@ -23,6 +23,14 @@ vai no ademir >>
     # Register your models here.
     admin.site.register(models.UserProfile)
 
+criar views
+criar urls da api
+vincular urls da api com a do projeto
+
+
+
+
+
 
 
 
